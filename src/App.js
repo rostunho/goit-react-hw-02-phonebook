@@ -26,8 +26,11 @@ class App extends Component {
 
   createNewContact = newContact => {
     const { contacts } = this.state;
+    const unUniqueContact = contacts.some(
+      contact => contact.name === newContact.name,
+    );
 
-    contacts.some(contact => contact.name === newContact.name)
+    unUniqueContact
       ? toast.error(`${newContact.name} is already in contacts`)
       : this.setState(prevState => ({
           contacts: [newContact, ...prevState.contacts],
@@ -53,7 +56,7 @@ class App extends Component {
           placeholder="Find contacts by name"
         />
         <ContactList filteredContacts={filteredContacts} />
-        <Toaster />
+        <Toaster position="top-right" />
       </>
     );
   }
