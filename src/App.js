@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
+
+import AppTitle from 'components/AppTitile/AppTitle';
+import ContactForm from 'components/ContactForm/ContactForm';
+import Title from 'components/Title/Title';
+import Filter from 'components/Filter/Filter';
+import ContactList from 'components/ContactList/ContactList';
 
 class App extends Component {
   state = {
@@ -10,38 +15,22 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
-  handleInput = event => {
-    // console.log(event.target.value);
-    // console.log(event.target.name);
-    const { name, value } = event.target;
+  handleFilter = event => {
+    const { value } = event.target;
 
-    this.setState({ [name]: value });
+    this.setState({ filter: value });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    // console.log(event.target);
-    const { name, number } = this.state;
-
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-
+  createNewContact = newContact => {
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
-      name: '',
-      number: '',
     }));
   };
 
   render() {
-    const { contacts, name, number, filter } = this.state;
+    const { contacts, filter } = this.state;
 
     const normalizedFilter = filter.toLowerCase();
     const filteredContacts = contacts.filter(contact =>
@@ -50,52 +39,15 @@ class App extends Component {
 
     return (
       <>
-        <h1>Phonebook</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleInput}
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </label>
-          <label>
-            Number
-            <input
-              type="tel"
-              name="number"
-              value={number}
-              onChange={this.handleInput}
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-          </label>
-
-          <button type="submit">Add contact</button>
-        </form>
-        <h2>Contacts</h2>
-        <label>
-          Find contacts by name
-          <input
-            type="text"
-            name="filter"
-            value={filter}
-            onChange={this.handleInput}
-          />
-        </label>
-        <ul>
-          {filteredContacts.map(({ id, name, number }) => (
-            <li key={id}>
-              {name}: {number}
-            </li>
-          ))}
-        </ul>
+        <AppTitle title="Phonebook" />
+        <ContactForm createContact={this.createNewContact} />
+        <Title title="Contacts" />
+        <Filter
+          filter={filter}
+          handleFilter={this.handleFilter}
+          placeholder="Find contacts by name"
+        />
+        <ContactList filteredContacts={filteredContacts} />
       </>
     );
   }
