@@ -1,4 +1,5 @@
 import Contact from 'components/Contact/Contact';
+import PropTypes from 'prop-types';
 
 function ContactList({ filteredContacts }) {
   return (
@@ -12,5 +13,9 @@ function ContactList({ filteredContacts }) {
     </ul>
   );
 }
+
+ContactList.propTypes = {
+  filteredContacts: PropTypes.array.isRequired,
+};
 
 export default ContactList;

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function Contact({ name, number }) {
   return (
     <div>
@@ -8,5 +10,10 @@ function Contact({ name, number }) {
     </div>
   );
 }
+
+Contact.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+};
 
 export default Contact;

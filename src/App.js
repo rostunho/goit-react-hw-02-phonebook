@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 import AppTitle from 'components/AppTitile/AppTitle';
 import ContactForm from 'components/ContactForm/ContactForm';
@@ -24,9 +25,13 @@ class App extends Component {
   };
 
   createNewContact = newContact => {
-    this.setState(prevState => ({
-      contacts: [newContact, ...prevState.contacts],
-    }));
+    const { contacts } = this.state;
+
+    contacts.some(contact => contact.name === newContact.name)
+      ? toast.error(`${newContact.name} is already in contacts`)
+      : this.setState(prevState => ({
+          contacts: [newContact, ...prevState.contacts],
+        }));
   };
 
   render() {
@@ -48,6 +53,7 @@ class App extends Component {
           placeholder="Find contacts by name"
         />
         <ContactList filteredContacts={filteredContacts} />
+        <Toaster />
       </>
     );
   }
