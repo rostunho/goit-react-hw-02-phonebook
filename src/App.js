@@ -25,10 +25,15 @@ class App extends Component {
 
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
+      name: '',
     }));
+
+    // this.setState({ name: '' });
   };
 
   render() {
+    const { contacts, name } = this.state;
+
     return (
       <>
         <h1>Phonebook</h1>
@@ -36,6 +41,7 @@ class App extends Component {
           <input
             type="text"
             name="name"
+            value={name}
             onChange={this.handleInput}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -44,6 +50,11 @@ class App extends Component {
           <button type="submit">Add contact</button>
         </form>
         <h2>Contacts</h2>
+        <ul>
+          {contacts.map(({ id, name }) => (
+            <li key={id}>{name}</li>
+          ))}
+        </ul>
       </>
     );
   }
