@@ -37,6 +37,12 @@ class App extends Component {
         }));
   };
 
+  removeContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   render() {
     const { contacts, filter } = this.state;
 
@@ -55,7 +61,10 @@ class App extends Component {
           handleFilter={this.handleFilter}
           placeholder="Find contacts by name"
         />
-        <ContactList filteredContacts={filteredContacts} />
+        <ContactList
+          filteredContacts={filteredContacts}
+          deleteContact={this.removeContact}
+        />
         <Toaster position="top-right" />
       </>
     );

@@ -1,12 +1,17 @@
 import Contact from 'components/Contact/Contact';
 import PropTypes from 'prop-types';
 
-function ContactList({ filteredContacts }) {
+function ContactList({ filteredContacts, deleteContact }) {
   return (
     <ul>
       {filteredContacts.map(({ id, name, number }) => (
         <li key={id}>
-          <Contact name={name} number={number} />
+          <Contact
+            name={name}
+            number={number}
+            id={id}
+            deleteContact={deleteContact}
+          />
           {/* {name}: {number} */}
         </li>
       ))}
