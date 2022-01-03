@@ -36,7 +36,7 @@ export const DeleteButton = styled.button`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: var(--accent-color);
+  background-color: var(--border-color);
   cursor: pointer;
   border: none;
 

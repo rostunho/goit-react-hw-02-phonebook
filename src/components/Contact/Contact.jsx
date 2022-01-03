@@ -5,7 +5,7 @@ import { IoMdRemove } from 'react-icons/io';
 function Contact({ name, number, id, deleteContact }) {
   return (
     <Card>
-      <CgProfile size="50px" color="var(--border-color)" />
+      <CgProfile size="50px" color="var(--accent-color)" />
 
       <Info>
         <Name>{name} </Name>
