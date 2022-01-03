@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const HeadTitle = styled.h1`
   display: block;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 20px 30px;
   width: 480px;
