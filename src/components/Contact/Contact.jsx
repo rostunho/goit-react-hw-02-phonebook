@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
+import { Card, Info, Name, Number, DeleteButton } from './Contact.styled';
 import { CgProfile } from 'react-icons/cg';
-
+import { IoMdRemove } from 'react-icons/io';
 function Contact({ name, number, id, deleteContact }) {
   return (
-    <div>
-      <CgProfile size="25px" />
-      <p>
-        {name}
-        <span>: {number}</span>
-      </p>
-      <button type="button" onClick={() => deleteContact(id)}>
-        Delete
-      </button>
-    </div>
+    <Card>
+      <CgProfile size="50px" color="var(--border-color)" />
+
+      <Info>
+        <Name>{name} </Name>
+        <Number>{number}</Number>
+      </Info>
+
+      <DeleteButton type="button" onClick={() => deleteContact(id)}>
+        <IoMdRemove size="25px" color="#fff" />
+      </DeleteButton>
+    </Card>
   );
 }
 

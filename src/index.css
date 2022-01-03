@@ -3,6 +3,7 @@
   --border-color: #b7b7b7;
   --hover-color: #2f95ce;
   --text-secondary-color: #afafaf;
+  --text-alt-color: #888888;
   --text-dark-color: #404040;
 }
 
@@ -20,4 +21,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+p {
+  margin: 0;
 }

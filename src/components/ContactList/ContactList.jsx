@@ -1,11 +1,12 @@
 import Contact from 'components/Contact/Contact';
 import PropTypes from 'prop-types';
+import { List, Item } from './ContactList.styled';
 
 function ContactList({ filteredContacts, deleteContact }) {
   return (
-    <ul>
+    <List>
       {filteredContacts.map(({ id, name, number }) => (
-        <li key={id}>
+        <Item key={id}>
           <Contact
             name={name}
             number={number}
@@ -13,9 +14,9 @@ function ContactList({ filteredContacts, deleteContact }) {
             deleteContact={deleteContact}
           />
           {/* {name}: {number} */}
-        </li>
+        </Item>
       ))}
-    </ul>
+    </List>
   );
 }
 
