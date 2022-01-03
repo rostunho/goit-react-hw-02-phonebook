@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
 export const Title = styled.h1`
+  display: block;
   margin: 0 auto;
-  padding: 15px 15px;
-  width: 500px;
+  padding: 15px 30px;
+  width: 480px;
+
+  font-size: 32px;
   line-height: 1;
   text-transform: uppercase;
   /* height: 75px; */
   color: #fff;
-  background-color: #37acee;
-  border-radius: 25px 25px 0 0;
+  background-color: var(--accent-color);
 
   /* background-image: repeating-linear-gradient(
     to bottom,
@@ -18,4 +20,11 @@ export const Title = styled.h1`
     #5fc5ff 20px,
     #5fc5ff 21px
   ); */
+`;
+
+export const Wrapper = styled.div`
+  width: 480px;
+  margin: 0 auto;
+  border-radius: 25px 25px 0 0;
+  overflow: hidden;
 `;
