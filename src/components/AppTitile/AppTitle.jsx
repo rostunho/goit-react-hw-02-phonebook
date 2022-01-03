@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import { Title, Wrapper } from './AppTitle.styled';
+import { HeadTitle, Wrapper } from './AppTitle.styled';
 
 function AppTitle({ title }) {
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <HeadTitle>{title}</HeadTitle>
     </Wrapper>
   );
 }
