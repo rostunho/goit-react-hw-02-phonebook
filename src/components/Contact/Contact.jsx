@@ -12,7 +12,11 @@ function Contact({ name, number, id, deleteContact }) {
         <Number>{number}</Number>
       </Info>
 
-      <DeleteButton type="button" onClick={() => deleteContact(id)}>
+      <DeleteButton
+        type="button"
+        onClick={() => deleteContact(id)}
+        aria-label="Remove contact"
+      >
         <IoMdRemove size="25px" color="#fff" />
       </DeleteButton>
     </Card>
